@@ -1,69 +1,47 @@
 package com.github.hcsp.polymorphism;
 
 public class Main {
-//    abstract static class 会跑 {
-//        String name;
-//
-//        会跑(String name) {
-//            this.name = name;
-//        }
-//
-//        String getName() {
-//            return name;
-//        }
-//
-//        void 跑() {
-//            System.out.println(name + "跑啊跑啊跑");
-//        }
-//    }
+    abstract static class 会跑 {
+        String name;
 
-    interface 会跑 {
-      default   void 跑(){
-          System.out.println(this.getClass().getSimpleName()+ "跑啊跑啊跑");
-      }
-
-    }
-   interface 会游泳{
-     default    void 游泳(){
-         System.out.println(this.getClass().getSimpleName() + "游啊游啊游");
-     }
-}
-//    abstract static class 会游泳 {
-//        String name;
-//
-//        会游泳(String name) {
-//            this.name = name;
-//        }
-//
-//        String getName() {
-//            return name;
-//        }
-//
-//        void 游泳() {
-//            System.out.println(name + "游啊游啊游");
-//        }
-//    }
-
-    static class 猫  implements 会跑 {
-             String name;
-
-        public 猫(String name) {
+        会跑(String name) {
             this.name = name;
         }
 
+        String getName() {
+            return name;
+        }
 
-        @Override
-        public void 跑() {
-//            "小花猫"
-            System.out.println(name  + "跑啊跑啊跑");
+        void 跑() {
+            System.out.println(name + "跑啊跑啊跑");
         }
     }
 
-    static class 鱼 implements 会游泳 {
-             String name;
+    abstract static class 会游泳 {
+        String name;
 
-        public 鱼(String name) {
+        会游泳(String name) {
             this.name = name;
+        }
+
+        String getName() {
+            return name;
+        }
+
+        void 游泳() {
+            System.out.println(name + "游啊游啊游");
+        }
+    }
+
+    static class 猫 extends 会跑 {
+        猫() {
+            super("小花猫");
+        }
+    }
+
+    static class 鱼 extends 会游泳 {
+        鱼() {
+            super("鱼");
         }
     }
 
@@ -77,11 +55,5 @@ public class Main {
     public static void main(String[] args) {
         new 乌龟().跑();
         new 乌龟().游泳();
-        new 猫("小猫咪").跑();
     }
-
-    public static class 乌龟 implements 会跑,会游泳{
-
-        }
-    }
-
+}
