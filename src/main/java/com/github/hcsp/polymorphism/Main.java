@@ -1,11 +1,10 @@
 package com.github.hcsp.polymorphism;
 
 public class Main {
-    abstract static class 会跑 extends 会游泳 {
+    abstract static class 会跑 {
         String name;
 
         会跑(String name) {
-            super(name);
             this.name = name;
         }
 
@@ -50,9 +49,8 @@ public class Main {
     // 请尝试通过接口的默认方法实现mixin
     // 从而实现最大程度的代码复用
     //
-     static class 乌龟 extends 会跑 {
-        乌龟() { super("乌龟"); };
-     }
+    // static class 乌龟 extends 会跑, 会游泳 {
+    // }
 
     public static void main(String[] args) {
         new 乌龟().跑();
